@@ -1,0 +1,294 @@
+<?xml version="1.0"?>
+<robot name="apostile_robot">
+
+
+
+    <!--base_link-->
+    <link name="Robot_base">
+
+        <visual>
+            
+        
+            <geometry>
+                <box size="0.366 0.2934 0.136"/>
+            </geometry>
+            <material name = "white">
+
+                <color rgba="10 10 10 0.1"/>
+            </material>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.366 0.2934 0.136"/>
+            </geometry>
+            
+        </collision>
+
+        <inertial>
+            <mass value="5.6"/>
+            <inertia ixx="0.0711" ixy="0.0" ixz="0.0" iyy="0.1025" iyz="0.0" izz="0.0486"/>
+        </inertial>
+        
+    </link>
+
+
+    
+
+    
+
+    
+    
+
+
+
+
+    <!--front_left_wheel-->
+    
+    <link name="front_left_wheel">
+        <visual>
+            <geometry>
+                <cylinder radius="0.06" length="0.025"/>
+            </geometry>
+            <material name="red">
+                <color rgba="1 0.0 0.0 1"/>
+            </material>
+        </visual>
+
+        <collision>
+            <geometry>
+                <cylinder radius="0.06" length="0.025"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="0.6"/>
+            <inertia ixx="5.7125e-4" ixy="0.0" ixz="0.0" iyy="5.7125e-4" iyz="0.0" izz="1.08e-3"/>
+        </inertial>
+       
+    </link>
+    <joint name="front_left_wheel_joint" type="continuous">
+        <parent link="Robot_base"/>
+        <child link="front_left_wheel"/>
+        <axis xyz="0 0 1"/>
+        <origin xyz="0.10509 0.11577 -0.03856" rpy="-1.5707 0 0"/>
+    </joint>
+
+
+
+
+
+
+
+
+
+    <!--front_right_wheel-->
+    
+    <link name="front_right_wheel">
+        <visual>
+            <geometry>
+                <cylinder radius="0.06" length="0.025"/>
+            </geometry>
+
+            <material name="red">
+                <color rgba="1 0.0 0.0 1"/>
+            </material>
+
+            
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="0.06" length="0.025"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="0.6"/>
+            <inertia ixx="5.7125e-4" ixy="0.0" ixz="0.0" iyy="5.7125e-4" iyz="0.0" izz="1.08e-3"/>
+        </inertial>
+
+    </link>
+    <joint name="front_right_wheel_joint" type="continuous">
+        <parent link="Robot_base"/>
+        <child link="front_right_wheel"/>
+        <axis xyz="0 0 1"/>
+        <origin xyz="0.10509 -0.11577 -0.03856" rpy="-1.5707 0 0"/>
+    </joint>
+
+
+    
+
+
+
+    
+
+
+    <!--back_left_wheel-->
+    
+    <link name="back_left_wheel">
+        <visual>
+            <geometry>
+                <cylinder radius="0.06" length="0.025"/>
+            </geometry>
+            <material name="red">
+                <color rgba="1 0.0 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="0.06" length="0.025"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="0.6"/>
+            <inertia ixx="5.7125e-4" ixy="0.0" ixz="0.0" iyy="5.7125e-4" iyz="0.0" izz="1.08e-3"/>
+        </inertial>
+
+    </link>
+
+    <joint name="back_left_wheel_joint" type="continuous">
+        <parent link="Robot_base"/>
+        <child link="back_left_wheel"/>
+        <axis xyz="0 0 1"/>
+        <origin xyz="-0.10509 0.11577 -0.03856" rpy="-1.5707 0 0"/>
+    </joint>
+
+
+    
+    
+    
+    
+
+
+
+    <!--back_right_wheel-->
+    
+    <link name="back_right_wheel">
+        <visual>
+            <geometry>
+                <cylinder radius="0.06" length="0.025"/>
+            </geometry>
+
+            <material name="red">
+                <color rgba="1 0.0 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="0.06" length="0.025"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="0.6"/>
+            <inertia ixx="5.7125e-4" ixy="0.0" ixz="0.0" iyy="5.7125e-4" iyz="0.0" izz="1.08e-3"/>
+        </inertial>
+        
+    </link>
+
+
+    <joint name="back_right_wheel_joint" type="continuous">
+        <parent link="Robot_base"/>
+        <child link="back_right_wheel"/>
+        <axis xyz="0 0 1"/>
+        <origin xyz="-0.10509 -0.11577 -0.03856" rpy="-1.5707 0 0"/>
+    </joint>
+
+
+
+
+
+
+
+
+
+    <!--lidar-->
+
+    <link name="lidar">
+        <visual>
+            <geometry>
+                <cylinder radius="0.035" length="0.055"/>
+            </geometry>
+
+            <material name="blue">
+                <color rgba="0.0 0.0 1 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="0.035" length="0.055"/>
+            </geometry>
+        </collision>
+        
+            
+    </link>
+
+    <joint name="lidar_joint" type="fixed">
+        <parent link="Robot_base"/>
+        <child link="lidar"/>
+        <origin xyz="0.0 0.0 0.095" rpy="0.0 0.0 0.0"/>
+    </joint>
+
+
+
+
+
+
+
+    <!-- apostile_robot_ gazebo_plugins-->
+    <gazebo reference="lidar">
+        <sensor type="ray" name="head_hokuyo_sensor">
+            <pose>0 0 0 0 0 0</pose>
+            <visualize>true</visualize>
+            <update_rate>40</update_rate>
+            <ray>
+                <scan>
+                    <horizontal>
+                        <samples>720</samples>
+                        <resolution>1</resolution>
+                        <min_angle>-3.14</min_angle>
+                        <max_angle>3.14</max_angle>
+                    </horizontal>
+                </scan>
+                <range>
+                    <min>0.08</min>
+                    <max>5.0</max>
+                    <resolution>0.01</resolution>
+                </range>
+                <noise>
+                    <type>gaussian</type>
+          <!-- Noise parameters based on published spec for Hokuyo laser
+               achieving "+-30mm" accuracy at range < 10m.  A mean of 0.0m and
+               stddev of 0.01m will put 99.7% of samples within 0.03m of the true
+               reading. -->
+                    <mean>0.0</mean>
+                    <stddev>0.01</stddev>
+                </noise>
+            </ray>
+            <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_laser.so">
+                <topicName>/scan</topicName>
+                <frameName>lidar</frameName> 
+                <!-- frame name should match link name  -->
+            </plugin>
+        </sensor>
+    </gazebo>
+
+
+
+
+
+    <gazebo>
+        <plugin name="skid_steer_drive_controller" filename="libgazebo_ros_skid_steer_drive.so">
+            <updateRate>100.0</updateRate>
+            <robotNamespace>/</robotNamespace>
+            <leftFrontJoint>front_left_wheel_joint</leftFrontJoint>
+            <rightFrontJoint>front_right_wheel_joint</rightFrontJoint>
+            <leftRearJoint>back_left_wheel_joint</leftRearJoint>
+            <rightRearJoint>back_right_wheel_joint</rightRearJoint>
+            <wheelSeparation>0.23154</wheelSeparation>
+            <wheelDiameter>0.12</wheelDiameter>
+            <robotBaseFrame>Robot_base</robotBaseFrame>
+            <torque>40</torque>
+            <topicName>cmd_vel</topicName>
+            <broadcastTF>true</broadcastTF>
+        </plugin>
+    </gazebo>
+    
+    
+</robot>

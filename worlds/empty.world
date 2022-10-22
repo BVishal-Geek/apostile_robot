@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<sdf version="1.4">
+
+
+    <world name="world_name">
+        <include>
+            <uri>model://ground_plane</uri>
+        </include>
+        <include>
+            <uri>model://sun</uri>
+        </include>
+        <include>
+            <uri>model:///home/vishal/catkin_ws/src/apostile_robot/models/floor_plan</uri>
+            
+        </include>
+    
+
+    </world>
+</sdf>
